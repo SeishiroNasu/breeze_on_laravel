@@ -30,10 +30,25 @@ log into app bash
 
 install laralve in app
 
-`composer create-project --prefer-dist "laravel/laravel=8.*"`
+`composer create-project --prefer-dist "laravel/laravel=8.*" .`
+
+make sure .env is not in the directory.
+
+`rm .env` or delete from GUI
+
+### solve permission-problems
+
+`docker-compose exec app bash`
+
+```
+chmod 777 -R storage/logs/
+chmod 777 -R storage/framework/sessions/
+chmod 777 -R storage/framework/views/
+```
 
 ### check
 
 check the installation was success by accessing `localhost:8080`
 
 laravel welcome-page should appear
+
