@@ -18,9 +18,9 @@
 `mkdir laravel`
 
 ### building Docker image and containers
-`docker-compose build -p --no-cache`
+`docker-compose build --parallel --no-cache`
 
-`docker-compose run -d`
+`docker-compose up -d`
 
 ### laravel installation
 
