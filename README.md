@@ -1,44 +1,49 @@
-# Building Laravel Env on Docker
+# Laravel環境@Dockerの構築
 
-## Specs
+Dockerを使ったLaravel環境の構築
+
+## 仕様
 
 - php:8.0.2-buster
 - composer:1.10
 - nginx:1.18-alpine
 - mysql:8.0
+- laravel/laravel=8.*
 
-### detail
-- service `app`is built on custom php-based image.
-- nginx and mysql are built on default images.
+## 手順
 
-## Instruction
+### 準備
 
-## prep.
+`laravel` ディレクトリの作成
 
 `mkdir laravel`
 
-### building Docker image and containers
-`docker-compose build --parallel --no-cache`
+### Dockerイメージとコンテナの構築
 
-`docker-compose up -d`
+`docker-compose.yml`のファイルがあるディレクトリにて以下のコマンドを実行
 
-### laravel installation
+1. `docker-compose build --parallel --no-cache`
+2. `docker-compose up -d`
 
-log into app bash
+### Laravelインストール
 
+1. `app`コンテナのbashにアクセスし、
+  `docker-compose exec app bash`
+2. `app`ディレクトリにlaravelのソースファイルインストール
+  `composer create-project --prefer-dist "laravel/laravel=8.*" .`
+
+注意) 
+`.env`が`laravel`ディレクトリに存在しないことを確認する.
+存在する場合は削除.
+
+### パーミッション問題
+
+以上でインストール作業は終わりだが実行時にパーミッション問題が上がる.
+
+`app`サービスにbashログイン
 `docker-compose exec app bash`
 
-install laralve in app
-
-`composer create-project --prefer-dist "laravel/laravel=8.*" .`
-
-make sure .env is not in the directory.
-
-`rm .env` or delete from GUI
-
-### solve permission-problems
-
-`docker-compose exec app bash`
+各フォルダのパーミッションを`777`に変更.
 
 ```
 chmod 777 -R storage/logs/
@@ -46,9 +51,7 @@ chmod 777 -R storage/framework/sessions/
 chmod 777 -R storage/framework/views/
 ```
 
-### check
+## 確認
 
-check the installation was success by accessing `localhost:8080`
-
-laravel welcome-page should appear
-
+ブラウザで`localhost:8080`を開き
+laravelのウェルカムページが開けば成功
