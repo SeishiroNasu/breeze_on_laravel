@@ -27,23 +27,23 @@ Dockerを使ったLaravel環境の構築
 
 ### Laravelインストール
 
-1. `app`コンテナのbashにアクセスし、
+1. `app`コンテナのbashにアクセスし、  
   `docker-compose exec app bash`
-2. `app`ディレクトリにlaravelのソースファイルインストール
+2. `app`ディレクトリにlaravelのソースファイルインストール.  
   `composer create-project --prefer-dist "laravel/laravel=8.*" .`
 
-注意) 
-`.env`が`laravel`ディレクトリに存在しないことを確認する.
-存在する場合は削除.
+注意)  
+`.env`が`laravel`ディレクトリに存在しないことを確認する.  
+存在する場合は削除.  
 
 ### パーミッション問題
 
-以上でインストール作業は終わりだが実行時にパーミッション問題が上がる.
+以上でインストール作業は終わりだが実行時にパーミッション問題が上がる.  
 
-`app`サービスにbashログイン
-`docker-compose exec app bash`
-
-各フォルダのパーミッションを`777`に変更.
+`app`サービスにbashログイン.  
+`docker-compose exec app bash`.  
+  
+各フォルダのパーミッションを`777`に変更.  
 
 ```
 chmod 777 -R storage/logs/
@@ -53,5 +53,4 @@ chmod 777 -R storage/framework/views/
 
 ## 確認
 
-ブラウザで`localhost:8080`を開き
-laravelのウェルカムページが開けば成功
+ブラウザで`localhost:8080`を開き、laravelのウェルカムページが開けば成功
