@@ -29,7 +29,7 @@ Dockerを使ったLaravel環境の構築
 
 1. `app`コンテナのbashにアクセスし、  
   `docker-compose exec app bash`
-2. `app`ディレクトリにlaravelのソースファイルインストール.  
+2. `laravel`ディレクトリにlaravelのソースファイルインストール.  
   `composer create-project --prefer-dist "laravel/laravel=8.*" .`
 
 注意)  
