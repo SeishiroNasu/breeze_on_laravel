@@ -4,7 +4,7 @@ Dockerを使ったLaravel環境の構築
 
 ## 仕様
 
-- php:8.0.2-buster
+- php:7.4-fpm-buster
 - composer:1.10
 - nginx:1.18-alpine
 - mysql:8.0
